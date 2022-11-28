@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Chefsplace</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cart">Cart</string>
+    <string name="home">Начало</string>
+    <string name="products">Продукти</string>
+    <string name="wishlist">Желани</string>
+    <string name="profile">Профил</string>
 </resources>
