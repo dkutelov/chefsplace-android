@@ -8,26 +8,26 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="bg.digitals.chefsplace.ui.fragments.HomeFragment"
-        android:label="fragment_home"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/productsFragment"
         android:name="bg.digitals.chefsplace.ui.fragments.ProductsFragment"
-        android:label="fragment_products"
+        android:label="@string/products"
         tools:layout="@layout/fragment_products" />
     <fragment
         android:id="@+id/wishlistFragment"
         android:name="bg.digitals.chefsplace.ui.fragments.WishlistFragment"
-        android:label="fragment_wishlist"
+        android:label="@string/wishlist"
         tools:layout="@layout/fragment_wishlist" />
     <fragment
         android:id="@+id/cartFragment"
         android:name="bg.digitals.chefsplace.ui.fragments.CartFragment"
-        android:label="fragment_cart"
+        android:label="@string/cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="bg.digitals.chefsplace.ui.fragments.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="@string/products"
         tools:layout="@layout/fragment_profile" />
 </navigation>
