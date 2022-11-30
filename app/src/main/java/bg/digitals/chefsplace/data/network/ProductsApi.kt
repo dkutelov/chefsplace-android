@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface ProductsApi {
 
-    @GET("/products/{filter}")
-    suspend fun getProducts(@Path("filter") filter: String): Response<List<ProductsResponse>>
+    @GET("products")
+    suspend fun getProducts(): Response<List<ProductsResponse>>
 
 }

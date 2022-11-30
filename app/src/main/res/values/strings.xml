@@ -7,4 +7,5 @@
     <string name="products">Продукти</string>
     <string name="wishlist">Желани</string>
     <string name="profile">Профил</string>
+    <string name="product_image">product image</string>
 </resources>

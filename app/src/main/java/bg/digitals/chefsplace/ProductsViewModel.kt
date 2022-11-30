@@ -4,16 +4,19 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import bg.digitals.chefsplace.data.Repository
 import bg.digitals.chefsplace.models.ProductsResponse
 import bg.digitals.chefsplace.utils.NetworkResult
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import retrofit2.Response
 
+@HiltViewModel
 class ProductsViewModel @Inject constructor(
     private val repository: Repository,
     application: Application
@@ -28,12 +31,19 @@ class ProductsViewModel @Inject constructor(
     private suspend fun getProductsSafeCall(filter: String?) {
         productsResponse.value = NetworkResult.Loading()
 
-        try {
-            val response = repository.remote.getProducts(filter ?: "")
-            productsResponse.value = handleProductsResponse(response)
-        } catch (e: Exception) {
-            productsResponse.value = NetworkResult.Error("Products not found!")
+        if (hasInternetConnection()) {
+
+            try {
+                val response = repository.remote.getProducts(filter ?: "")
+
+                productsResponse.value = handleProductsResponse(response)
+            } catch (e: Exception) {
+                productsResponse.value = NetworkResult.Error("Products not found!")
+            }
+        } else {
+            productsResponse.value = NetworkResult.Error("No Internet Connection!")
         }
+
 
     }
 
@@ -48,11 +58,12 @@ class ProductsViewModel @Inject constructor(
             }
 
             response.body()!!.isEmpty() -> {
-                return NetworkResult.Error("Recipes Not Found!")
+                return NetworkResult.Error("Products Not Found!")
             }
 
-            response.isSuccessful -> {
+            response.isSuccessful -> {                                                                                                                                                                                                          kl
                 val products = response.body()
+                Log.i("products", products.toString())
                 return NetworkResult.Success(products!!)
             }
             else -> {

@@ -44,11 +44,9 @@ object NetworkModule {
     }
 
 
-    @Singleton //Application scope
-    @Provides //because retrofit is external
+    @Singleton
+    @Provides
     fun provideApiService(retrofit: Retrofit): ProductsApi {
         return retrofit.create(ProductsApi::class.java)
     }
-
-
 }

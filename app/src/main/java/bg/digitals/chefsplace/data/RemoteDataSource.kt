@@ -10,6 +10,6 @@ class RemoteDataSource @Inject constructor(
 ) {
 
     suspend fun getProducts(filter: String): Response<List<ProductsResponse>> {
-        return productsApi.getProducts(filter)
+        return productsApi.getProducts()
     }
 }
